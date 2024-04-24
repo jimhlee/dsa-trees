@@ -5,7 +5,14 @@ import { TreeNodeNum } from "../common/tree";
  * is greater than lowerBound. */
 
 function numGreater(node: TreeNodeNum, lowerBound: number): number {
-  return 42;
+  let count = node.val > lowerBound ? 1 : 0;
+
+  for (let child of node.children){
+    count += numGreater(child, lowerBound);
+  }
+
+  return count;
+
 }
 
 export { numGreater };

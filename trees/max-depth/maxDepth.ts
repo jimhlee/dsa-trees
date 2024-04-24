@@ -6,7 +6,18 @@ import { TreeNodeNum } from "../common/tree";
  **/
 
 function maxDepth(node: TreeNodeNum | null): number {
-  return 42;
+  // Check if starting node has children
+  if(!node) return 0;
+
+  let result = 1;
+
+  if (node.children.length > 0){
+    for (let child of node.children){
+      result = Math.max(result, maxDepth(child) + 1)
+    }
+  }
+
+  return result;
 }
 
 export { maxDepth };
